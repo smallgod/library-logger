@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LoggerContext;
-import org.openide.util.MapFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
