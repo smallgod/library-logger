@@ -59,39 +59,37 @@
     
     <dependencies>
         
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.21</version>
-        </dependency>
-        <dependency>
+          <!--If existing components use SLF4J and you want to have this logging routed to Log4j 2, 
+                then add the following but do not remove any SLF4J dependencies. 
+        -->
+        <!--<dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
-            <version>2.6.2</version>
-        </dependency>
-        <dependency>
+            <version>2.6</version>
+        </dependency>-->
+  
+        <!-- The Log4j 2 to SLF4J Adapter allows applications coded to the Log4j 2 API to be routed to SLF4J. 
+        Use of this adapter may cause some loss of performance as the Log4j 2 Messages must be formatted before they can be passed to SLF4J. 
+        The SLF4J Bridge must NOT be on the class path when this is in use. -->
+        <!--<dependency>
             <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.6.2</version>
-        </dependency>
+            <artifactId>log4j-to-slf4j</artifactId>
+            <version>2.6</version>
+        </dependency>-->
+      
+       
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.6.2</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
         </dependency>
 
         <dependency>
-            <groupId>com.sgutilities</groupId>
-            <artifactId>sgutilities</artifactId>
-            <version>1.0</version>
-            <type>jar</type>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
         </dependency>
+
 
        <!--
         <dependency>
@@ -106,7 +104,33 @@
             <version>1.0.1.Final</version>
         </dependency>
         -->
-
+        
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.8.2</version>
+            <type>jar</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.6.2</version>
+            <type>jar</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.6.2</version>
+            <type>jar</type>
+        </dependency>
+        
+       <!-- <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency> -->
 
     </dependencies>
     
