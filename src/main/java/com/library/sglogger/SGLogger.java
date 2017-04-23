@@ -10,17 +10,15 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
-
- 
-    
 /**
  *
  * @author smallgod
@@ -34,10 +32,8 @@ public final class SGLogger {
     }
 
     public <T> void addLogger(final Class<T> loggerClass) {
-        this.LOGGER = LoggerFactory.getLogger(loggerClass);
-        //this.LOGGER = LogManager.getLogger(loggerClass);
-        
-        
+        //this.LOGGER = LoggerFactory.getLogger(loggerClass);
+        this.LOGGER = LogManager.getLogger(loggerClass);
 
     }
 
@@ -130,6 +126,37 @@ public final class SGLogger {
     public static void configureLog4J(String log4jFile) throws FileNotFoundException, Exception {
 
         System.out.println("configureLog4J Called, yay!");
+
+        LoggerContext context = (LoggerContext) LogManager.getContext(false);
+        File file = new File(log4jFile);
+        if (file.exists()) {
+            context.setConfigLocation(file.toURI());
+        } else {
+            throw new FileNotFoundException("Failed to find file @: " + log4jFile);
+        }
+
+        //Properties props = new Properties();
+        //props.put("logsFolder", paramsToPass);
+        //DOMConfigurator.setParameter(elem, propSetter, props);
+        //DOMConfigurator.configure(log4jFile); //XML configurator
+        //MapLookup.setMainArguments(paramsToPass);
+        //PropertyConfigurator.configure(log4jPropsFileLoc);//Property file configurator
+    }
+
+    /**
+     * Configure the log4J2.xml file
+     *
+     * @param log4jFile
+     * @param logDir
+     * @throws java.io.FileNotFoundException
+     * @throws java.lang.Exception
+     */
+    public static void configureLog4J(String log4jFile, String logDir) throws FileNotFoundException, Exception {
+
+        System.out.println("configureLog4J Called, yay!");
+
+        System.setProperty("log4j.configurationFile", log4jFile);
+        System.setProperty("logDir", logDir);
 
         LoggerContext context = (LoggerContext) LogManager.getContext(false);
         File file = new File(log4jFile);

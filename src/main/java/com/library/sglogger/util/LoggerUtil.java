@@ -29,8 +29,25 @@ public final class LoggerUtil {
 
     }
 
+    /**
+     * 
+     * @param log4jFile
+     * @throws FileNotFoundException
+     * @throws Exception 
+     */
     public static void configureLog4J(String log4jFile) throws FileNotFoundException, Exception {
         SGLogger.configureLog4J(log4jFile);
+    }
+    
+    /**
+     * 
+     * @param log4jFile
+     * @param logDir
+     * @throws FileNotFoundException
+     * @throws Exception 
+     */
+    public static void configureLog4J(String log4jFile, String logDir) throws FileNotFoundException, Exception {
+        SGLogger.configureLog4J(log4jFile, logDir);
     }
 
     public void debug(String debugLogText) {
